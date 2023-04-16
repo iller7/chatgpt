@@ -1,42 +1,43 @@
-#ChatGPT Web
+# ChatGPT 
 
-> Disclaimer: This project is only published on GitHub, based on the MIT license, free and used as open source learning. And there will be no sales of accounts, paid services, discussion groups, discussion groups, etc. in any form. Beware of being deceived.
+## Table of Contents
 
-- [ChatGPT Web](#chatgpt-web)
-  - [Introduction](#Introduction)
-  - [route to be implemented](#route to be implemented)
-  - [pre-requirements] (#pre-requirements)
-    - [Node](#node)
-    - [PNPM] (#pnpm)
-    - [fill key](#fill key)
-  - [Install dependencies](#Install dependencies)
-    - [backend] (#backend)
-    - [Frontend] (#Frontend)
-  - [Test environment running](#Test environment running)
-    - [backend service](#backend service)
-    - [Front Page](#Front Page)
-  - [Environment Variables](#Environment Variables)
-  - [package](#package)
-    - [use-docker] (#use-docker)
-      - [Docker parameter example](#docker-parameter example)
-      - [Docker build \& Run](#docker-build--run)
-      - [Docker compose] (#docker-compose)
-  - [use-railway-deploy](#use-railway-deploy)
-    - [Railway Environment Variables] (#railway-environment-variables)
-  - [Manual packing] (#Manual packing)
-    - [backend service](#backend service-1)
-    - [Front Page](#Front Page-1)
-  - [FAQ](#FAQ)
-  - [Participate in contribution] (#Participate in contribution)
-  - [Sponsorship](#sponsored)
-  - [License](#license)
+- [Disclaimer](#disclaimer)
+- [Introduction](#introduction)
+- [ToDo](#todo)
+- [Prerequisites](#prerequisites)
+  - [Node](#node)
+  - [PNPM](#pnpm)
+  - [Openai Api Key](#openai-api-key)
+- [Install dependencies](#install-dependencies)
+  - [Backend/Service](#backendservice)
+  - [Frontend/Web](#frontendweb)
+- [Development environment setup](#development-environment-setup)
+  - [Backend/Service](#backendservice-1)
+  - [Frontend/Web](#frontendweb-1)
+- [Environment Variables](#environment-variables)
+- [Packaging](#packaging)
+  - [Docker](#docker)
+    - [Docker parameter example](#docker-parameter-example)
+    - [Docker build \& Run](#docker-build--run)
+    - [Docker compose](#docker-compose)
+  - [Railway Deployment](#railway-deployment)
+    - [Railway Environment Variables](#railway-environment-variables)
+  - [Manual/CI](#manualci)
+    - [Backend/Service](#backendservice-2)
+    - [Frontend/Web](#frontendweb-2)
+- [FAQ](#faq)
+
+## Disclaimer
+
+> Disclaimer: This project is currently published on GitHub, based on the MIT license, free and used as open source learning. And there will be no sales of accounts, paid services, discussion groups, discussion groups, etc. in any form. Beware of being deceived.
 
 ## Introduction
 
 Supports dual models, providing two unofficial `ChatGPT API` methods
 
 | How | Free? | Reliability | Quality |
-| --------------------------------------------------- | --- --- | ---------- | ---- |
+| --------------------------------------------------- | ------ | ---------- | ---- |
 | `ChatGPTAPI(gpt-3.5-turbo-0301)` | No | Reliable | Relatively stupid |
 | `ChatGPTUnofficialProxyAPI(webpage accessToken)` | yes | relatively unreliable | smart |
 
@@ -65,7 +66,7 @@ Please check all parameter variables or [here](#environment variable)
 /service/.env.example
 ```
 
-## route to be implemented
+## ToDo
 [✓] Dual Model
 
 [✓] Multi-session storage and context logic
@@ -100,7 +101,7 @@ If you don't have `pnpm` installed
 npm install pnpm -g
 ```
 
-### Fill in the key
+### Openai Api Key
 Get `Openai Api Key` or `accessToken` and fill in local environment variables [Jump](#Introduction)
 
 ```
@@ -117,7 +118,7 @@ OPENAI_ACCESS_TOKEN=
 
 > In order to simplify the understanding burden of `back-end developers`, the front-end `workspace` mode is not adopted, but stored in folders. If you only need to do secondary development on the front-end page, just delete the `service` folder.
 
-### rear end
+### Backend/Service
 
 Go to the folder `/service` and run the following command
 
@@ -125,14 +126,14 @@ Go to the folder `/service` and run the following command
 pnpm install
 ```
 
-### front end
+### Frontend/Web
 Run the following command in the root directory
 ```shell
 pnpm bootstrap
 ```
 
-## Test environment running
-### Backend Services
+## Development environment setup
+### Backend/Service
 
 Go to the folder `/service` and run the following command
 
@@ -140,7 +141,7 @@ Go to the folder `/service` and run the following command
 pnpm start
 ```
 
-### Front-end webpage
+### Frontend/Web
 Run the following command in the root directory
 ```shell
 pnpm dev
@@ -170,9 +171,9 @@ General:
 - `HTTPS_PROXY` supports `http`, `https`, `socks5`, optional
 - `ALL_PROXY` supports `http`, `https`, `socks5`, optional
 
-## Pack
+## Packaging
 
-### Using Docker
+### Docker
 
 #### Docker parameter example
 
@@ -233,7 +234,7 @@ services:
 - `OPENAI_API_BASE_URL` optional, available when `OPENAI_API_KEY` is set
 - `OPENAI_API_MODEL` optional, available when `OPENAI_API_KEY` is set     
 
-### Using Railway Deployment
+### Railway Deployment
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/yytmgc)
 
@@ -259,8 +260,9 @@ services:
 
 > Note: `Railway` modifying environment variables will restart `Deploy`
 
-### Manual packaging
-#### Backend Services
+### Manual/CI
+
+#### Backend/Service
 > If you do not need the `node` interface of this project, you can omit the following operations
 
 Copy the `service` folder to the server where you have the `node` service environment.
@@ -278,7 +280,7 @@ pnpm prod
 
 PS: You can run `pnpm start` directly on the server without packaging
 
-#### Front-end webpage
+#### Frontend/Web
 
 1. Modify `VITE_GLOB_API_URL` in the `.env` file in the root directory to your actual backend interface address
 
@@ -290,7 +292,7 @@ PS: You can run `pnpm start` directly on the server without packaging
 pnpm build
 ```
 
-## common problem
+## FAQ
 Q: Why do `Git` commits always report errors?
 
 A: Because there is commit information verification, please follow the [Commit Guide](./CONTRIBUTING.md)
